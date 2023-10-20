@@ -78,12 +78,10 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_requestsNewCacheInsertionWithTimestampONSuccessfullDeletion() {
         let timestamp = Date()
         let (sut, store) = makeSUT(currentDate: {timestamp})
-        let items = [uniqueItem(), uniqueItem()]
-        let localFeedItems = items.map{LocalFeedItem(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL)}
-
-        sut.save(items) {_ in}
+        let items = uniqueItems()
+        sut.save(items.models) {_ in}
         store.completeDeletionSuccessfully()
-        XCTAssertEqual(store.receivedMessages, [.delteCachedFeed, .insert(localFeedItems, timestamp)])
+        XCTAssertEqual(store.receivedMessages, [.delteCachedFeed, .insert(items.local, timestamp)])
     }
 
     func test_save_failsOnDeletionError() {
@@ -178,7 +176,14 @@ class CacheFeedUseCaseTests: XCTestCase {
     private func uniqueItem() -> FeedItem {
         return FeedItem(id: UUID(), description: "any", location: "any", imageURL: anyURL())
     }
-    
+
+    private func uniqueItems() -> (models: [FeedItem], local: [LocalFeedItem]) {
+        let models = [uniqueItem(), uniqueItem()]
+        let local = models.map{LocalFeedItem(id:$0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL)}
+        return (models, local)
+    }
+
+
     private func anyURL() -> URL {
         return URL(string:"https://any-url.com")!
     }
