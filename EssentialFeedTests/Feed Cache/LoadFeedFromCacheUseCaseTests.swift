@@ -40,7 +40,28 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         expect(sut, toCompleteWith: .success([])) {
             store.completeRetrievalWithEmptyCache()
         }
+    }
 
+    func test_load_deliverCachedImagesOnLessThanSevenDaysOldCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: 1)
+        let (sut, store) = makeSUT(currentDate: {fixedCurrentDate } )
+
+        expect(sut, toCompleteWith: .success(feed.models)) {
+            store.completeRetrieval(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+        }
+    }
+
+    func test_load_deliverNoImagesOnSevenDaysOldCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let sevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7)
+        let (sut, store) = makeSUT(currentDate: {fixedCurrentDate } )
+
+        expect(sut, toCompleteWith: .success([])) {
+            store.completeRetrieval(with: feed.local, timestamp: sevenDaysOldTimestamp)
+        }
     }
 
 
@@ -86,5 +107,33 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
        return NSError(domain: "any error", code: 0)
     }
 
+    private func anyURL() -> URL {
+        return URL(string:"https://any-url.com")!
+    }
 
+    private func uniqueImage() -> FeedImage {
+        return FeedImage(id: UUID(), description: "any", location: "any", url: anyURL())
+    }
+
+    private func uniqueImageFeed() -> (models: [FeedImage], local: [LocalFeedImage]) {
+        let models = [uniqueImage(), uniqueImage()]
+        let local = models.map{LocalFeedImage(id:$0.id, description: $0.description, location: $0.location, url: $0.url)}
+        return (models, local)
+    }
+
+
+
+
+
+}
+
+
+private extension Date {
+    func adding(days: Int) -> Date {
+        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
+    }
+
+    func adding(seconds: TimeInterval) -> Date {
+        return self + seconds
+    }
 }
