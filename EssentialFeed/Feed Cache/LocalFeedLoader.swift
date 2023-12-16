@@ -55,7 +55,7 @@ extension LocalFeedLoader {
 }
 
 // MARK: Load
-extension LocalFeedLoader {
+extension LocalFeedLoader: FeedLoader {
 
     public func load (completion: @escaping (LoadFeedResult) -> Void) {
         //store.retrieve{error in completion(error)}
