@@ -7,7 +7,7 @@
 
 import Foundation
 // previosly while dealing with tech people we used to call this LocalFeedItem instead of LocalFeedImage
-public struct LocalFeedImage: Equatable {
+public struct LocalFeedImage: Equatable, Codable {
     public let id: UUID
     public let description: String?
     public let location: String?
