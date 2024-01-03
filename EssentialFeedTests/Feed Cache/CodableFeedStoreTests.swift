@@ -76,27 +76,15 @@ final class CodableFeedStoreTests: XCTestCase {
 
     func test_retreieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
-        
+
         expect(sut, toRetrive: .empty)
     }
 
     func test_retreieve_hasNoSideEffectsOnEmptyCache() {
 
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for cache retrieval")
-        sut.retreive { firstResult in
-            sut.retreive { secondResult in
-                switch (firstResult, secondResult) {
-                case (.empty, .empty):
-                    break
-                default:
-                    XCTFail("Expected empty result, got \(firstResult) and \(secondResult) instead")
-                }
-            }
-            exp.fulfill()
-        }
 
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetriveTwice: .empty)
     }
 
     func test_retreieveAfterInsertingToEmptyCache_deliversInsertedValues() {
@@ -129,8 +117,7 @@ final class CodableFeedStoreTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 1.0)
-        expect(sut, toRetrive: .found(feed: feed, timestamp: timestamp))
-        expect(sut, toRetrive: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetriveTwice: .found(feed: feed, timestamp: timestamp))
 
     }
 
@@ -141,6 +128,11 @@ final class CodableFeedStoreTests: XCTestCase {
         let sut = CodableFeedStore(storeURL: testSepecificStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+
+    private func expect(_ sut: CodableFeedStore, toRetriveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, toRetrive: expectedResult, file: file, line: line)
+        expect(sut, toRetrive: expectedResult, file: file, line: line)
     }
 
     private func expect(_ sut: CodableFeedStore, toRetrive expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
