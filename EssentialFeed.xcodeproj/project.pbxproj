@@ -39,6 +39,7 @@
 		DFF09DEB2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEA2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift */; };
 		DFF09DED2B51E6AC0011BF18 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEC2B51E6AC0011BF18 /* CoreDataFeedStore.swift */; };
 		DFF09DF02B51E8DD0011BF18 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEE2B51E8DD0011BF18 /* FeedStore.xcdatamodeld */; };
+		DFF09DF32B55F71B0011BF18 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DF22B55F71B0011BF18 /* CoreDataHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		DFF09DEA2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		DFF09DEC2B51E6AC0011BF18 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		DFF09DEF2B51E8DD0011BF18 /* FeedStpre.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStpre.xcdatamodel; sourceTree = "<group>"; };
+		DFF09DF22B55F71B0011BF18 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				DFA99A482B478F2100324BC1 /* CodableFeedStore.swift */,
 				DFF09DEE2B51E8DD0011BF18 /* FeedStore.xcdatamodeld */,
 				DFF09DEC2B51E6AC0011BF18 /* CoreDataFeedStore.swift */,
+				DFF09DF22B55F71B0011BF18 /* CoreDataHelpers.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF09DF32B55F71B0011BF18 /* CoreDataHelpers.swift in Sources */,
 				DFF09DF02B51E8DD0011BF18 /* FeedStore.xcdatamodeld in Sources */,
 				41E794B22951D6AE00CFFDED /* FeedItemsMapper.swift in Sources */,
 				412771CA28EC41CB00C7DD30 /* FeedLoader.swift in Sources */,
