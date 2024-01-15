@@ -50,6 +50,27 @@ public final class CoreDataFeedStore: FeedStore {
 
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 
+        let context = self.context
+        context.perform {
+            do {
+                let managedCache = ManagedCache(context: context)
+                managedCache.timestamp = timestamp
+                managedCache.feed = NSOrderedSet(array: feed.map({ localFeedImage in
+                    let managed = ManagedFeedImage(context: context)
+                    managed.id = localFeedImage.id
+                    managed.imageDescription = localFeedImage.description
+                    managed.location = localFeedImage.location
+                    managed.url = localFeedImage.url
+                    return managed
+                }))
+
+                try context.save()
+                completion(nil)
+
+            } catch {
+                completion(error)
+            }
+        }
     }
 
 
@@ -89,11 +110,13 @@ private extension NSManagedObjectModel {
     }
 }
 
+@objc(ManagedCache)
 private class ManagedCache: NSManagedObject {
     @NSManaged var timestamp: Date
     @NSManaged var feed: NSOrderedSet
 }
 
+@objc(ManagedFeedImage)
 private class ManagedFeedImage: NSManagedObject {
     @NSManaged var id: UUID
     @NSManaged var imageDescription: String?
