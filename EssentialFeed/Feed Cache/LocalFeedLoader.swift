@@ -54,7 +54,7 @@ extension LocalFeedLoader: FeedLoader {
             guard let self = self else {return}
             switch result {
             case let .failure(error):
-                completion(.faliure(error))
+                completion(.failure(error))
             case let .found(feed,timestamp) where FeedCachePolicy.validate(timestamp, against: self.currentDate()):
                 completion(.success(feed.toModels()))
             case .found, .empty:

@@ -30,7 +30,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
             XCTAssertEqual(imageFeed[7], expectedImage(at: 7))
             
             
-        case let .faliure(error)?:
+        case let .failure(error)?:
             XCTFail("Expected succesful feed result, got \(error) instead")
             
         default:
