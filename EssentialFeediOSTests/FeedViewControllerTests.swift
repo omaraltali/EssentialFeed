@@ -41,55 +41,44 @@ final class FeedViewController: UITableViewController {
 
 final class FeedViewControllerTests: XCTestCase {
 
-    func test_init_doesNotLoadFeed() {
-        let (_,loader) = makeSUT()
+    func test_loadFeedActions_requestFeedFromLoader() {
+        let (sut,loader) = makeSUT()
 
-        XCTAssertEqual(loader.loadCallCount, 0)
-    }
+        XCTAssertEqual(loader.loadCallCount, 0, "Expected no loading requests before view is loaded")
 
-    func test_viewDidLoad_loadsFeed() {
-        let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
-
-        XCTAssertEqual(loader.loadCallCount, 1)
-    }
-
-    func test_userInitiatedFeedReload_reloadsFeed() {
-        let (sut, loader) = makeSUT()
-        sut.loadViewIfNeeded()
+        XCTAssertEqual(loader.loadCallCount, 1,"Expected a loading request once view is loaded")
 
         sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.loadCallCount, 2)
+        XCTAssertEqual(loader.loadCallCount, 2, "Expected another loading request once user initiates a reload")
 
         sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.loadCallCount, 3)
+        XCTAssertEqual(loader.loadCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
 
-    func test_viewIsAppearing_showsLoadingIndicator() {
-        let (sut, _) = makeSUT()
+    func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
+        let (sut, loader) = makeSUT()
 
+        // Show the loading indicator when the view is appearing
         let window = UIWindow()
         window.rootViewController = sut
         window.makeKeyAndVisible()
         window.layoutIfNeeded()
-        XCTAssertTrue(sut.isShowingLoadingIndicator)
-    }
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
 
-    func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
-        let (sut, loader) = makeSUT()
-
+        // Hide the loading indicator after the feed is loaded
         sut.loadViewIfNeeded()
-//        loader.completeFeedLoading() no need for this func since i call end refreshing at the completion of load func in sut
+        loader.completeFeedLoading()
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
 
-        XCTAssertFalse(sut.isShowingLoadingIndicator)
-    }
-
-    func test_userInitiatedFeedReload_hidesLoadingIndicatorOnLoaderCompletion() {
-        let (sut, loader) = makeSUT()
-
+        // Show the loading indicator on user-initiated reload
         sut.simulateUserInitiatedFeedReload()
-        
-        XCTAssertFalse(sut.isShowingLoadingIndicator)
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
+
+        // Hide the loading indicator after user-initiated reload
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoading(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed")
     }
 
 
@@ -114,10 +103,9 @@ final class FeedViewControllerTests: XCTestCase {
             completions.append(completion)
         }
 
-//        func completeFeedLoading() {
-//            completions[0](.success([]))
-//        }
-    }
+        func completeFeedLoading(at index: Int = 0) {
+            completions[index](.success([]))
+        }    }
 }
 
 private extension FeedViewController {
