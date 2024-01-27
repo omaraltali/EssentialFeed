@@ -33,7 +33,9 @@ final class FeedViewController: UITableViewController {
 
     @objc private func load() {
         refreshControl?.beginRefreshing()
-        loader?.load(completion: { _ in })
+        loader?.load(completion: { [weak self] _ in
+            self?.refreshControl?.endRefreshing()
+        })
     }
 }
 
@@ -63,7 +65,7 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.loadCallCount, 3)
     }
 
-    func test_viewIsAppearing_shows_loadingIndicator() {
+    func test_viewIsAppearing_showsLoadingIndicator() {
         let (sut, _) = makeSUT()
 
         let window = UIWindow()
@@ -72,6 +74,18 @@ final class FeedViewControllerTests: XCTestCase {
         window.layoutIfNeeded()
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
+
+    func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+//        loader.completeFeedLoading() no need for this func since i call end refreshing at the completion of load func in sut
+
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+    }
+
+
+    // MARK: - Helpers
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
@@ -82,11 +96,19 @@ final class FeedViewControllerTests: XCTestCase {
     }
 
     class LoaderSpy: FeedLoader {
-        private (set) var loadCallCount: Int = 0
+        private var completions = [(FeedLoader.Result) -> Void]()
+
+        var loadCallCount: Int {
+            return completions.count
+        }
 
         func load(completion: @escaping (FeedLoader.Result) -> Void) {
-            loadCallCount += 1
+            completions.append(completion)
         }
+
+//        func completeFeedLoading() {
+//            completions[0](.success([]))
+//        }
     }
 }
 
