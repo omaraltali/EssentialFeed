@@ -5,6 +5,8 @@
 //  Created by Omar Altali on 31/01/2024.
 //
 
+// COMMIT BEFORE refactoring to MVP
+
 import Foundation
 import EssentialFeed
 
