@@ -11,6 +11,7 @@ import EssentialFeed
 import EssentialFeediOS
 
 
+// a suggestion to rename it to FeedUIIntegrationTests
 final class FeedViewControllerTests: XCTestCase {
 
 
