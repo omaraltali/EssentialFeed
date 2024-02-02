@@ -153,6 +153,7 @@
 		DFBA116E2B6D646D008C62C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		DFBA11702B6D64BB008C62C0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		DFBA11712B6D64C8008C62C0 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
+		DFBA11722B6D655E008C62C0 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		DFCF41F12B66A158004E3483 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		DFCF41F72B686372004E3483 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		DFCF41FB2B686833004E3483 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
@@ -645,6 +646,7 @@
 				Base,
 				"pt-BR",
 				ar,
+				el,
 			);
 			mainGroup = 412771A528EC411400C7DD30;
 			productRefGroup = 412771B028EC411400C7DD30 /* Products */;
@@ -838,6 +840,7 @@
 				DFBA116E2B6D646D008C62C0 /* en */,
 				DFBA11702B6D64BB008C62C0 /* pt-BR */,
 				DFBA11712B6D64C8008C62C0 /* ar */,
+				DFBA11722B6D655E008C62C0 /* el */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
