@@ -77,6 +77,9 @@ Location</string>
                                                             <buttonConfiguration key="configuration" style="plain" title="🔄">
                                                                 <fontDescription key="titleFontDescription" type="system" pointSize="60"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="rbb-k8-Mk6" eventType="touchUpInside" id="T8b-lq-rVg"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,6 +121,14 @@ Location</string>
                                         <constraint firstAttribute="trailingMargin" secondItem="A8P-tu-b6f" secondAttribute="trailing" id="i1d-4Q-FXK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="DRy-Jr-DNZ" id="Hzo-Jn-NCt"/>
+                                    <outlet property="feedImageContainer" destination="xAm-ab-c2J" id="UDM-Ax-Ytj"/>
+                                    <outlet property="feedImageRetryButton" destination="IeQ-GU-zbO" id="p9k-eY-A8D"/>
+                                    <outlet property="feedImageView" destination="SCB-u5-P7J" id="4Bz-R0-uRR"/>
+                                    <outlet property="locationContainer" destination="evM-vz-j12" id="yKs-6n-KfR"/>
+                                    <outlet property="locationLabel" destination="TFh-pC-ipk" id="Axe-cW-fx0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
