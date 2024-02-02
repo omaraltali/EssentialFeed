@@ -23,10 +23,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.prefetchDataSource = self
         refresh()
-
     }
 
     public override func viewIsAppearing(_ animated: Bool) {
