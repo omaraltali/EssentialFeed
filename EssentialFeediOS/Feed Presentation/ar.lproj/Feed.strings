@@ -7,3 +7,4 @@
 */
 
 "FEED_VIEW_TITLE" = "موجزي";
+"FEED_VIEW_CONNECTION_ERROR" = "لا يمكن الاتصال بالخادم";
