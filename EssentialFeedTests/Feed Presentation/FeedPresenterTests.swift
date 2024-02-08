@@ -45,7 +45,7 @@ final class FeedPresenterTests: XCTestCase {
 
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
-        XCTAssertTrue(view.message.isEmpty, "Expected no view messages")
+        XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
     }
 
     func test_didStartLoadingFeed_displayNoErrorMessageAndStartsLoading() {
@@ -53,7 +53,7 @@ final class FeedPresenterTests: XCTestCase {
 
         sut.didStartLoadingFeed()
 
-        XCTAssertEqual(view.message, [.display(errorMessage: .none),
+        XCTAssertEqual(view.messages, [.display(errorMessage: .none),
                                       .display(isLoading: true)
                                      ])
     }
@@ -71,18 +71,18 @@ final class FeedPresenterTests: XCTestCase {
     }
 
     private class ViewSpy: FeedErrorView, FeedLoadingView {
-        enum Message: Equatable {
+        enum Message: Hashable {
             case display(errorMessage: String?)
             case display(isLoading: Bool)
         }
-        private (set) var message:[Message] = []
+        private (set) var messages = Set<Message>()
 
         func display(_ viewModel: FeedErrorViewModel) {
-            message.append(.display(errorMessage: viewModel.message))
+            messages.insert(.display(errorMessage: viewModel.message))
         }
 
         func display(_ viewModel: FeedLoadingViewModel) {
-            message.append(.display(isLoading: viewModel.isLoading))
+            messages.insert(.display(isLoading: viewModel.isLoading))
         }
     }
 
