@@ -9,15 +9,11 @@ import XCTest
 import EssentialFeed
 
 final class URLSessionHTTPClientTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        URLProtocolStub.startInterciptingRequests()
-    }
+
     
     override func tearDown() {
         super.tearDown()
-        URLProtocolStub.stopInerceptingRequests()
+        URLProtocolStub.removeStub()
     }
     
     func test_getFromURL_performsGETRequestWithURL() {
@@ -91,7 +87,10 @@ final class URLSessionHTTPClientTests: XCTestCase {
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> HTTPClient {
-        let sut = URLSessionHTTPClient()
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [URLProtocolStub.self]
+        let session = URLSession(configuration: configuration)
+        let sut = URLSessionHTTPClient(session: session)
         trackForMemoryLeaks(sut, file: file, line: line)
         
         return sut
@@ -156,7 +155,9 @@ final class URLSessionHTTPClientTests: XCTestCase {
         return receivedResult
         
     }
-    
+
+    // MARK: - URLProtocolStub
+
     private class URLProtocolStub: URLProtocol {
         private struct Stub {
             let data: Data?
@@ -176,21 +177,16 @@ final class URLSessionHTTPClientTests: XCTestCase {
         static func stub(data: Data?, response: URLResponse?, error: Error?) {
             stub = Stub(data: data, response: response, error: error, requestObserver: nil)
         }
-        
+
         static func observeRequests(observer: @escaping (URLRequest)->()){
             stub = Stub(data: nil, response: nil, error: nil, requestObserver: observer)
         }
-        
-        
-        static func startInterciptingRequests() {
-            URLProtocol.registerClass(URLProtocolStub.self)
-            
-        }
-        
-        static func stopInerceptingRequests() {
-            URLProtocol.unregisterClass(URLProtocolStub.self)
+
+
+        static func removeStub() {
             stub = nil
         }
+
         class override func canInit(with request: URLRequest) -> Bool {
             return true
         }
