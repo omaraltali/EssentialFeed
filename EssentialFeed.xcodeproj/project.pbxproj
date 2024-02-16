@@ -329,7 +329,7 @@
 				DFBB20D02B76E4CF00EC7E1D /* Helpers */,
 				412771C728EC414300C7DD30 /* FeedImage.swift */,
 				412771C928EC41CB00C7DD30 /* FeedLoader.swift */,
-				DFCF41F32B686272004E3483 /* Feed Image Loader */,
+				DFCF41F72B686372004E3483 /* FeedImageDataLoader.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -420,14 +420,6 @@
 			children = (
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		DFCF41F32B686272004E3483 /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-				DFCF41F72B686372004E3483 /* FeedImageDataLoader.swift */,
-			);
-			path = "Feed Image Loader";
 			sourceTree = "<group>";
 		};
 		DFCF41F42B686286004E3483 /* Feed UI */ = {
