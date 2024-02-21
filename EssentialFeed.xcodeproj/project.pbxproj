@@ -58,6 +58,8 @@
 		DFEA06B92B16A006005D7888 /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEA06B82B16A006005D7888 /* ValidateFeedCacheUseCaseTests.swift */; };
 		DFEA06BB2B16BC6D005D7888 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEA06BA2B16BC6D005D7888 /* FeedCacheTestHelpers.swift */; };
 		DFEA06BD2B16BD88005D7888 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEA06BC2B16BD88005D7888 /* SharedTestHelpers.swift */; };
+		DFEABCC82B86B2B000F26D9A /* FeedImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEABCC72B86B2B000F26D9A /* FeedImageDataStore.swift */; };
+		DFEABCCA2B86B2DF00F26D9A /* LocalFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEABCC92B86B2DF00F26D9A /* LocalFeedImageDataLoader.swift */; };
 		DFF09DEB2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEA2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift */; };
 		DFF09DED2B51E6AC0011BF18 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEC2B51E6AC0011BF18 /* CoreDataFeedStore.swift */; };
 		DFF09DF02B51E8DD0011BF18 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFF09DEE2B51E8DD0011BF18 /* FeedStore.xcdatamodeld */; };
@@ -185,6 +187,8 @@
 		DFEA06B82B16A006005D7888 /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		DFEA06BA2B16BC6D005D7888 /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		DFEA06BC2B16BD88005D7888 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		DFEABCC72B86B2B000F26D9A /* FeedImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataStore.swift; sourceTree = "<group>"; };
+		DFEABCC92B86B2DF00F26D9A /* LocalFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		DFF09DEA2B51E5D10011BF18 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		DFF09DEC2B51E6AC0011BF18 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		DFF09DEF2B51E8DD0011BF18 /* FeedStpre.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStpre.xcdatamodel; sourceTree = "<group>"; };
@@ -378,6 +382,8 @@
 				DF83043C2AE2EB1200781C76 /* FeedStore.swift */,
 				DF8304402AE3335B00781C76 /* LocalFeedImage.swift */,
 				DF83CA1B2B2D5B580077B841 /* FeedCachePolicy.swift */,
+				DFEABCC72B86B2B000F26D9A /* FeedImageDataStore.swift */,
+				DFEABCC92B86B2DF00F26D9A /* LocalFeedImageDataLoader.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -773,6 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFEABCCA2B86B2DF00F26D9A /* LocalFeedImageDataLoader.swift in Sources */,
 				DFF09DF32B55F71B0011BF18 /* CoreDataHelpers.swift in Sources */,
 				DFF09DF02B51E8DD0011BF18 /* FeedStore.xcdatamodeld in Sources */,
 				41E794B22951D6AE00CFFDED /* FeedItemsMapper.swift in Sources */,
@@ -793,6 +800,7 @@
 				41EA7BAE29907BE000C3AA2F /* URLSessionHTTPClient.swift in Sources */,
 				DFE907422B8013C80029FE02 /* RemoteFeedImageDataLoader.swift in Sources */,
 				DFBB20C82B745B7D00EC7E1D /* FeedLoadingViewModel.swift in Sources */,
+				DFEABCC82B86B2B000F26D9A /* FeedImageDataStore.swift in Sources */,
 				DFBB20CE2B745F5D00EC7E1D /* FeedImagePresenter.swift in Sources */,
 				DFBB20CF2B758D1000EC7E1D /* FeedImageDataLoader.swift in Sources */,
 				DFE907462B801EED0029FE02 /* HTTPURLResponse+StatusCode.swift in Sources */,
