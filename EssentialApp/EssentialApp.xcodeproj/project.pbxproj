@@ -26,6 +26,7 @@
 		DFDCF6712BB39F28003AA452 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF6702BB39F28003AA452 /* XCTestCase+MemoryLeakTracking.swift */; };
 		DFDCF6732BB39F8C003AA452 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF6722BB39F8C003AA452 /* SharedTestHelpers.swift */; };
 		DFDCF6762BB4E8EF003AA452 /* FeedLoaderCacheDecorateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF6742BB4E804003AA452 /* FeedLoaderCacheDecorateTests.swift */; };
+		DFDCF6782BB4E9B3003AA452 /* FeedLoaderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF6772BB4E9B3003AA452 /* FeedLoaderStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		DFDCF6702BB39F28003AA452 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		DFDCF6722BB39F8C003AA452 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		DFDCF6742BB4E804003AA452 /* FeedLoaderCacheDecorateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderCacheDecorateTests.swift; sourceTree = "<group>"; };
+		DFDCF6772BB4E9B3003AA452 /* FeedLoaderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				DFDCF6702BB39F28003AA452 /* XCTestCase+MemoryLeakTracking.swift */,
 				DFDCF6722BB39F8C003AA452 /* SharedTestHelpers.swift */,
+				DFDCF6772BB4E9B3003AA452 /* FeedLoaderStub.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				DFDCF6732BB39F8C003AA452 /* SharedTestHelpers.swift in Sources */,
 				DFDCF66C2BB3976D003AA452 /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				DF4B7A442B8DD5FD0037E893 /* RemoteWithLocalFallbackFeedLoaderTests.swift in Sources */,
+				DFDCF6782BB4E9B3003AA452 /* FeedLoaderStub.swift in Sources */,
 				DFDCF6712BB39F28003AA452 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
