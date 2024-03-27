@@ -22,6 +22,7 @@
 		DF56F7DB2B898BC10015B9A6 /* EssentialFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF56F7D92B898BC10015B9A6 /* EssentialFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFDCF66A2BB396A6003AA452 /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF6692BB396A6003AA452 /* FeedLoaderWithFallbackComposite.swift */; };
 		DFDCF66C2BB3976D003AA452 /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF66B2BB3976D003AA452 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */; };
+		DFDCF66E2BB39EB3003AA452 /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDCF66D2BB39EB3003AA452 /* FeedImageDataLoaderWithFallbackComposite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		DF56F7D92B898BC10015B9A6 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFDCF6692BB396A6003AA452 /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		DFDCF66B2BB3976D003AA452 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
+		DFDCF66D2BB39EB3003AA452 /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				DF45231C2B898AE1000EC6D9 /* LaunchScreen.storyboard */,
 				DF45231F2B898AE1000EC6D9 /* Info.plist */,
 				DFDCF6692BB396A6003AA452 /* FeedLoaderWithFallbackComposite.swift */,
+				DFDCF66D2BB39EB3003AA452 /* FeedImageDataLoaderWithFallbackComposite.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				DF4523122B898ADF000EC6D9 /* AppDelegate.swift in Sources */,
 				DFDCF66A2BB396A6003AA452 /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				DF4523142B898ADF000EC6D9 /* SceneDelegate.swift in Sources */,
+				DFDCF66E2BB39EB3003AA452 /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
