@@ -35,6 +35,10 @@ class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
         expect(sut, toCompleteWith: .failure(anyNSError()))
     }
 
+    func test_load_cachesLoadedFeedOnLoaderSuccess() {
+
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(loaderResult: FeedLoader.Result, file: StaticString = #file, line: UInt = #line) -> FeedLoader {
